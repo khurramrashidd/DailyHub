@@ -1,0 +1,23 @@
+.app-header { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
+
+.nav-tab { color: #ffffff99 !important; font-weight: 500; transition: all 0.3s ease;}
+.nav-tab.active {
+    font-weight: bold;
+    color: #ffcc00 !important;
+}
+
+/* Action Buttons specific styling from original */
+.btn-complete-action { background: linear-gradient(90deg, #2ecc71, #27ae60); color: white; border: none; }
+.btn-cancel-action { background: linear-gradient(90deg, #e74c3c, #c0392b); color: white; border: none;}
+.btn-reschedule-action { background: linear-gradient(90deg, #f39c12, #e67e22); color: white; border: none;}
+.btn-edit-action { background: linear-gradient(90deg, #3498db, #2980b9); color: white; border: none;}
+
+.card-actions button {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    font-weight: 600;
+}
+.card-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}

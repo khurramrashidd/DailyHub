@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+</head>
+<body class="bg-gradient-body d-flex align-items-center justify-content-center vh-100">
+    <div class="card bg-gradient-card shadow-lg border-0 rounded-4 p-4 p-md-5" style="max-width: 450px; width: 100%;">
+        <h2 class="text-center mb-4 text-primary fw-bold">Login / Signup</h2>
+        <form id="authForm">
+            <div class="mb-3">
+                <label for="authEmail" class="form-label fw-semibold text-secondary">Email</label>
+                <input type="email" id="authEmail" class="form-control form-control-lg rounded-pill" required>
+            </div>
+            <div class="mb-3">
+                <label for="authPassword" class="form-label fw-semibold text-secondary">Password</label>
+                <input type="password" id="authPassword" class="form-control form-control-lg rounded-pill" required minlength="6">
+            </div>
+            <div id="secretSection" style="display: none;">
+                <div class="mb-3">
+                    <label for="secretQuestion" class="form-label fw-semibold text-secondary">Secret Question (for recovery)</label>
+                    <select id="secretQuestion" class="form-select form-control-lg rounded-pill" required>
+                        <option value="">Select question...</option>
+                        <option value="pet">What is the name of your first pet?</option>
+                        <option value="school">What is the name of your first school?</option>
+                        <option value="city">What city were you born in?</option>
+                        <option value="food">What is your favorite food?</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="secretAnswer" class="form-label fw-semibold text-secondary">Secret Answer</label>
+                    <input type="text" id="secretAnswer" class="form-control form-control-lg rounded-pill" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold mt-3" id="authSubmit">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="#" id="toggleAuthMode" class="text-primary">Don't have an account? Signup</a>
+            <br>
+            <a href="#" id="forgetPassword" class="text-danger mt-2 d-block">Forgot Password?</a>
+        </div>
+        <div id="authError" class="text-danger text-center mt-3"></div>
+    </div>
+
+    <!-- Secret Verify Modal -->
+    <div class="modal fade" id="secretVerifyModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow-lg border-0 bg-gradient-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-primary">Verify Secret for Recovery</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="secretQuestionText"></p>
+                    <form id="secretVerifyForm">
+                        <input type="hidden" id="secretVerifyEmail">
+                        <div class="mb-3">
+                            <label for="secretVerifyAnswer" class="form-label fw-semibold">Your Answer</label>
+                            <input type="text" id="secretVerifyAnswer" class="form-control rounded-pill" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold">Verify</button>
+                    </form>
+                    <div id="secretError" class="text-danger text-center mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
